@@ -37,16 +37,16 @@ namespace Database
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TypePokemon>()
-                .HasMany(types => types.Pokemons)
+                .HasMany(types => types.Pokemons1)
                 .WithOne(pokemon => pokemon.Type1)
                 .HasForeignKey(pokemon => pokemon.IdType1)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             modelBuilder.Entity<TypePokemon>()
-                .HasMany(types => types.Pokemons)
+                .HasMany(types => types.Pokemons2)
                 .WithOne(pokemon => pokemon.Type2)
                 .HasForeignKey(pokemon => pokemon.IdType2)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.ClientSetNull);
             #endregion
 
             #region property configuration

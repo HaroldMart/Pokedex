@@ -6,7 +6,8 @@
         public string Name { get; set; }
 
         //Navegation property
-        public ICollection<Pokemon> Pokemons { get; set; }
+        public ICollection<Pokemon> Pokemons1 { get; set; }
+        public ICollection<Pokemon> Pokemons2 { get; set; }
 
     }
 }

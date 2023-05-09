@@ -46,8 +46,7 @@ namespace Database.Migrations
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_region = table.Column<int>(type: "int", nullable: false),
                     IdType1 = table.Column<int>(type: "int", nullable: false),
-                    IdType2 = table.Column<int>(type: "int", nullable: false),
-                    Type2Id = table.Column<int>(type: "int", nullable: false)
+                    IdType2 = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,14 +61,12 @@ namespace Database.Migrations
                         name: "FK_Pokemons_TypePokemons_IdType1",
                         column: x => x.IdType1,
                         principalTable: "TypePokemons",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Pokemons_TypePokemons_Type2Id",
-                        column: x => x.Type2Id,
+                        name: "FK_Pokemons_TypePokemons_IdType2",
+                        column: x => x.IdType2,
                         principalTable: "TypePokemons",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -83,9 +80,9 @@ namespace Database.Migrations
                 column: "IdType1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pokemons_Type2Id",
+                name: "IX_Pokemons_IdType2",
                 table: "Pokemons",
-                column: "Type2Id");
+                column: "IdType2");
         }
 
         /// <inheritdoc />

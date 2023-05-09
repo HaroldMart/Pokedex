@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Database.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230508134735_InitialCreate")]
+    [Migration("20230508195545_Initial Create")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -49,16 +49,13 @@ namespace Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Type2Id")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IdType1");
 
-                    b.HasIndex("Id_region");
+                    b.HasIndex("IdType2");
 
-                    b.HasIndex("Type2Id");
+                    b.HasIndex("Id_region");
 
                     b.ToTable("Pokemons", (string)null);
                 });
@@ -100,20 +97,18 @@ namespace Database.Migrations
             modelBuilder.Entity("Pokedex.Models.Pokemon", b =>
                 {
                     b.HasOne("Pokedex.Models.TypePokemon", "Type1")
-                        .WithMany("Pokemons")
+                        .WithMany("Pokemons1")
                         .HasForeignKey("IdType1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Pokedex.Models.TypePokemon", "Type2")
+                        .WithMany("Pokemons2")
+                        .HasForeignKey("IdType2")
                         .IsRequired();
 
                     b.HasOne("Pokedex.Models.Region", "Region")
                         .WithMany("Pokemons")
                         .HasForeignKey("Id_region")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Pokedex.Models.TypePokemon", "Type2")
-                        .WithMany()
-                        .HasForeignKey("Type2Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -131,7 +126,9 @@ namespace Database.Migrations
 
             modelBuilder.Entity("Pokedex.Models.TypePokemon", b =>
                 {
-                    b.Navigation("Pokemons");
+                    b.Navigation("Pokemons1");
+
+                    b.Navigation("Pokemons2");
                 });
 #pragma warning restore 612, 618
         }
