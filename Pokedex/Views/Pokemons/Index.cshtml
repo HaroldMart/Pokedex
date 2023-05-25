@@ -1,0 +1,33 @@
+﻿@model List<Application.ViewModels.PokemonViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <div class="mb-3 d-flex justify-content-between">
+        <h2>Mis Pokemones</h2>
+        <div>
+            <a href="" class="btn btn-success">Crear nuevo pokemon</a>
+        </div>
+    </div>
+
+    <div class="row pokemonsRow">
+        @foreach (Application.ViewModels.PokemonViewModel pokemon in Model)
+        {
+            <div class="col pokemon">
+                <div class="card cardPokemon shadow-sm">
+                    <img class="bd-placeholder-img card-img-top imagePokemon" src="@pokemon.ImagePath"></img>
+                    <h4 class="m-2">@pokemon.Name</h4>
+                    <p class="card-text m-3">@pokemon.Id</p>
+                    <div class="d-flex align-items-between m-2">
+                        <div class="btn-group">
+                            <a href="" class="btn btn-sm btn-outline-info">Editar</a>
+                            <a href="" class="btn btn-sm btn-outline-danger">Borrar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

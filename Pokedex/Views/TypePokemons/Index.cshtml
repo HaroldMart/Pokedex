@@ -1,0 +1,21 @@
+﻿@model List<Application.ViewModels.TypePokemonViewModel>
+
+@{
+    ViewData["Title"] = "TypePokemons";
+}
+
+<div class="container-fluid">
+    <h2 class="mb-3">Tipos</h2>
+    <div class="row">
+
+        @foreach (Application.ViewModels.TypePokemonViewModel typePokemon in Model)
+        {
+            <div class="col-lg-2 col-md-3 mb-3 col-sm-4">
+                <div class="card shadow-sm">
+                    <h4 class="m-2">@typePokemon.Name</h4>
+                    <p class="card-text m-3">@typePokemon.Id</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,4 +1,17 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿let typePokemon1 = document.getElementById("typePokemon1");
+let typePokemon1 = document.getElementById("typePokemon2");
 
-// Write your JavaScript code.
+function changeColorPokemon(Color) {
+    switch (Color) {
+        case "Tierra": Color.style.color = "#116D6E";
+            break;
+        case "Fuego": Color.style.color = "#CD1818";
+            break;
+        default: Color.style.color = "#E55807"
+    }
+}
+
+changeColor(typePokemon1.value);
+changeColor(typePokemon2.value);
+
+typePokemon1.style.color = "#E55807";

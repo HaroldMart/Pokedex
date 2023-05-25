@@ -1,0 +1,21 @@
+﻿@model List<Application.ViewModels.RegionViewModel>
+
+@{
+    ViewData["Title"] = "Regions";
+}
+
+<div class="container-fluid">
+    <h2 class="mb-3">Regiones</h2>
+    <div class="row">
+
+        @foreach (Application.ViewModels.RegionViewModel region in Model)
+        {
+            <div class="col-lg-2 col-md-3 mb-3 col-sm-4">
+                <div class="card shadow-sm">
+                    <h4 class="m-2">@region.Name</h4>
+                    <p class="card-text m-3">@region.Id</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

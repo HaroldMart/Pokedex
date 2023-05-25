@@ -1,8 +1,26 @@
-﻿@{
+﻿@model List<Application.ViewModels.PokemonViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid">
+    <h2 class="mb-3">Mis pokemones usando Entity Framework</h2>
+    <div class="row pokemonsRow">
+   
+    @foreach(Application.ViewModels.PokemonViewModel pokemon in Model)
+        {
+            <div class="col pokemon">
+                <div class="card cardPokemonHome shadow-sm">
+                    <img class="bd-placeholder-img card-img-top imagePokemon" src="@pokemon.ImagePath"></img>
+                    <h4 class="m-2">@pokemon.Name</h4>
+                    <p class="card-text textPokemon regionPokemon"><b>Region: </b>@pokemon.Region.Name</p>
+                    <div class="textPokemon typesPokemon d-flex flex-column m-2">
+                        <p class="card-text type1Pokemon"><b>Tipo primario: </b><div id="typePokemon1">@pokemon.Type1.Name</div></p>
+                        <p class="card-text type2Pokemon"><b>Tipo Secundario: </b><div id="typePokemon2">@pokemon.Type2.Name</div></p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

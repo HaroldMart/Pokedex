@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 html {
   font-size: 14px;
 }
@@ -18,5 +20,39 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pokemonsRow {
+    display: grid;
+    gap: 0.6rem;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.pokemon {
+    padding: 0;
+}
+
+.pokemon:hover {
+    transform: scale(0.97);
+    transition: all 700ms;
+}
+
+.cardPokemon {
+    height: 380px;
+    overflow: hidden;
+}
+
+.cardPokemonHome {
+    height: 400px;
+}
+
+.imagePokemon {
+    height: 230px;
+}
+
+.textPokemon {
+    margin: 0.6rem 0 0.3rem 0.3rem;
 }
