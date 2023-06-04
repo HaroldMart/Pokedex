@@ -1,0 +1,59 @@
+﻿@model Application.ViewModels.SavePokemonViewModel;
+@{
+    ViewData["Title"] = "SavePokemon";
+    bool editModel = Model.Id == 0 ? false : true;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4>@(editModel ? $"Editando el pokemon: {Model.Name}" : "Creando un nuevo pokemon")</h4>
+                    <div class="card-body">
+                        <form method="post" asp-controller="Pokemons" asp-action="@(editModel ? "Edit" : "Save")">
+                           <div class="mb-3">
+                               <label asp-for="Name" class="form-label">Nombre: </label>
+                               <input asp-for="Name" class="form-control"/>
+                               <span class="text-warning" asp-validation-for="Name"></span>
+                           </div>
+                            <div class="mb-3">
+                                <label asp-for="ImagePath" class="form-label">Imagen: </label>
+                                <input asp-for="ImagePath" class="form-control" />
+                                <span class="text-warning" asp-validation-for="ImagePath"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Id_region" class="form-label">Region: </label>
+                                <select asp-for="Id_region" class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                                <span class="text-warning" asp-validation-for="Id_region"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="IdType1" class="form-label">Tipo Primario: </label>
+                                <select asp-for="IdType1" class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                                <span class="text-warning" asp-validation-for="IdType1"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="IdType2" class="form-label">Tipo Secundario: </label>
+                                <select asp-for="IdType2" class="form-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+
+                            <input hidden class="form-control" asp-for="Id"/>
+
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <a class="btn btn-warning" asp-controller="Pokemons" asp-action="Index">Volver atras</a>
+                       </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

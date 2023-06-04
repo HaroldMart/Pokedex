@@ -1,14 +1,17 @@
 ﻿@model List<Application.ViewModels.PokemonViewModel>
+@using Application.Services;
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Pokemons";
+    string color1, color2 = "gray";
 }
+
 
 <div class="container-fluid">
     <div class="mb-3 d-flex justify-content-between">
         <h2>Mis Pokemones</h2>
         <div>
-            <a href="" class="btn btn-success">Crear nuevo pokemon</a>
+            <a asp-controller="Pokemons" asp-action="Save" class="btn btn-success">Crear nuevo pokemon</a>
         </div>
     </div>
 
@@ -19,11 +22,35 @@
                 <div class="card cardPokemon shadow-sm">
                     <img class="bd-placeholder-img card-img-top imagePokemon" src="@pokemon.ImagePath"></img>
                     <h4 class="m-2">@pokemon.Name</h4>
-                    <p class="card-text m-3">@pokemon.Id</p>
+                    <div class="textPokemon d-flex flex-column m-2 gap-3">
+                        @{
+                            color1 = PokemonServices.ChangeColorType(pokemon.Type1.Name);
+                            color2 = PokemonServices.ChangeColorType(pokemon.Type2.Name);
+                        }
+                        <div class="card-text d-flex flex-row justify-content-between">
+                            <b>Tipo primario: </b>
+                            <div style="background-color:@color1;" class="typePokemon">
+                                @pokemon.Type1.Name
+                             </div>
+                        </div>
+                        <div class="card-text d-flex justify-content-between">
+                            <b>Tipo Secundario: </b>
+                            <div style="background-color:@color2;" class="typePokemon">
+                                @pokemon.Type2.Name
+                            </div>
+                         </div>
+                        <div class="card-text"><b>Region: </b>
+                            @pokemon.Region.Name
+                        </div>
+                        <div class="card-text">
+                            <b>id: </b>
+                            @pokemon.Id
+                        </div>
+                    </div>
                     <div class="d-flex align-items-between m-2">
                         <div class="btn-group">
-                            <a href="" class="btn btn-sm btn-outline-info">Editar</a>
-                            <a href="" class="btn btn-sm btn-outline-danger">Borrar</a>
+                            <a asp-controller="Pokemons" asp-action="Edit" asp-route-Id="@pokemon.Id" class="btn btn-sm btn-outline-info">Editar</a>
+                            <a asp-controller="Pokemons" asp-action="Delete" asp-route-Id="@pokemon.Id" class="btn btn-sm btn-outline-danger">Borrar</a>
                         </div>
                     </div>
                 </div>

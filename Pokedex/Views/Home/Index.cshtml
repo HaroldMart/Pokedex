@@ -1,24 +1,44 @@
 ﻿@model List<Application.ViewModels.PokemonViewModel>
+@using Application.Services;
 
 @{
     ViewData["Title"] = "Home Page";
+    string color1, color2 = "gray";
 }
 
 <div class="container-fluid">
     <h2 class="mb-3">Mis pokemones usando Entity Framework</h2>
     <div class="row pokemonsRow">
-   
+
     @foreach(Application.ViewModels.PokemonViewModel pokemon in Model)
         {
             <div class="col pokemon">
                 <div class="card cardPokemonHome shadow-sm">
                     <img class="bd-placeholder-img card-img-top imagePokemon" src="@pokemon.ImagePath"></img>
                     <h4 class="m-2">@pokemon.Name</h4>
-                    <p class="card-text textPokemon regionPokemon"><b>Region: </b>@pokemon.Region.Name</p>
-                    <div class="textPokemon typesPokemon d-flex flex-column m-2">
-                        <p class="card-text type1Pokemon"><b>Tipo primario: </b><div id="typePokemon1">@pokemon.Type1.Name</div></p>
-                        <p class="card-text type2Pokemon"><b>Tipo Secundario: </b><div id="typePokemon2">@pokemon.Type2.Name</div></p>
+                    <div class="textPokemon d-flex flex-column m-2 gap-3">
+                        @{
+                            color1 = PokemonServices.ChangeColorType(pokemon.Type1.Name);
+                            color2 = PokemonServices.ChangeColorType(pokemon.Type2.Name);
+                        }
+                        <div class="card-text d-flex flex-row justify-content-between">
+                            <b>Tipo primario: </b>
+                            <div style="background-color:@color1;" class="typePokemon">
+                                @pokemon.Type1.Name
+                            </div>
+                        </div>
+                        <div class="card-text d-flex justify-content-between">
+                            <b>Tipo Secundario: </b>
+                            <div style="background-color:@color2" class="typePokemon">
+                                @pokemon.Type2.Name
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <b>Region: </b>
+                            @pokemon.Region.Name
+                        </div>
                     </div>
+                   
                 </div>
             </div>
         }

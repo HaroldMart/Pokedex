@@ -28,7 +28,7 @@ body {
     display: grid;
     gap: 0.6rem;
     justify-content: space-between;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
 }
 
 .pokemon {
@@ -41,7 +41,6 @@ body {
 }
 
 .cardPokemon {
-    height: 380px;
     overflow: hidden;
 }
 
@@ -51,6 +50,15 @@ body {
 
 .imagePokemon {
     height: 230px;
+}
+
+.typePokemon {
+    padding: 0.2rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    width: 60px;
+    border-radius: 5px
 }
 
 .textPokemon {
