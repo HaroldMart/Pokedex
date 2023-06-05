@@ -15,7 +15,8 @@ You have to change the connectionString in the appsettings.json:
 
 ```
  "ConnectionStrings": {
-    "defaultConnection": "Server=your_server; Database=your_database; Trusted_Connection=True; TrustServerCertificate=True; MultipleActiveResultSets=True"
+    "defaultConnection": "Server=your_server; Database=your_database; Trusted_Connection=True; 
+    TrustServerCertificate=True; MultipleActiveResultSets=True"
   },
 
 ```
