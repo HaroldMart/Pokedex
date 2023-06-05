@@ -40,7 +40,6 @@ You can add your regions and types of pokemons.
 <br/>
 
 ## Web App Screenshot Preview
-<hr>
 
 #### Pokemons page
 
