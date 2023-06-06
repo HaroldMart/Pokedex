@@ -44,15 +44,15 @@ You can add your regions and types of pokemons.
 
 #### Pokemons page
 
-![image](https://github.com/HaroldMart/Pokedex/assets/93040571/bd179bce-5148-4693-99ca-ee4e8d133825)
+![image](https://github.com/HaroldMart/Pokedex/assets/93040571/2ff19c49-07ff-44f4-826b-cf4c70e86bf8)
 
 #### Editing pokemons
 
-![image](https://github.com/HaroldMart/Pokedex/assets/93040571/59107922-6e4b-461c-8b47-db98e1ad632e)
+![image](https://github.com/HaroldMart/Pokedex/assets/93040571/7090cd43-9c35-40d8-8208-000df62a75dd)
 
 #### Types of pokemons
 
-![image](https://github.com/HaroldMart/Pokedex/assets/93040571/7d26a04e-f6c5-4647-b7ce-0661ae1ef9d7)
+![image](https://github.com/HaroldMart/Pokedex/assets/93040571/22d5f3ae-7b82-42ba-a610-cade8226abbc)
 
 #### Regions
 
