@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "noValidPokemon";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-danger text-light">
+                <h4>El tipo de pokemon que estas intentando eliminar tiene pokemones, primero eliminalos o cambialos de tipo</h4>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Pokemons" asp-action="Index">
+
+                    <a class="btn btn-warning text-light" asp-controller="Pokemons" asp-action="Index">Ok</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

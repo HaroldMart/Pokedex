@@ -9,14 +9,17 @@ namespace Pokedex.Controllers
     public class HomeController : Controller
     {
         private readonly PokemonServices _pokemonServices;
+        private getColors color;
 
         public HomeController(ApplicationContext dbContext)
         {
             _pokemonServices = new(dbContext);
+            color = new();
         }
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.color = this.color;
             return View(await _pokemonServices.GetAllPokemons());
         }
 

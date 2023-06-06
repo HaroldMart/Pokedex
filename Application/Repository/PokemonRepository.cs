@@ -1,4 +1,5 @@
-﻿using Database;
+﻿using Application.ViewModels;
+using Database;
 using Microsoft.EntityFrameworkCore;
 using Pokedex.Models;
 using System;

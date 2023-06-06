@@ -8,26 +8,41 @@ namespace Pokedex.Controllers
     public class PokemonsController : Controller
     {
         private readonly PokemonServices _pokemonServices;
+        private GetAllProperties _getAll;
+        getColors color;
 
         public PokemonsController(ApplicationContext dbContext)
         {
             _pokemonServices = new(dbContext);
+            _getAll = new(dbContext);
+            color = new();
         }
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.color = this.color;
             return View(await _pokemonServices.GetAllPokemons());
         }
 
-        public IActionResult Save()
+        public async Task<IActionResult> Save()
         {
-            return View("SavePokemon", new SavePokemonViewModel());
+            var getAllRegions = await _getAll.AllRegions();
+            var getAllTypePokemon = await _getAll.AllTypesPokemon();
+            ViewBag.getAllRegions = getAllRegions;
+            ViewBag.getAllTypePokemon = getAllTypePokemon;
+
+            return View("SavePokemon", new SavePokemonViewModel());;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(SavePokemonViewModel vm)
+        public async Task<IActionResult> SavePokemon(SavePokemonViewModel vm)
         {
-            if(!ModelState.IsValid)
+            var getAllRegions = await _getAll.AllRegions();
+            var getAllTypePokemon = await _getAll.AllTypesPokemon();
+            ViewBag.getAllRegions = getAllRegions;
+            ViewBag.getAllTypePokemon = getAllTypePokemon;
+
+            if (!ModelState.IsValid)
             {
                 return View("SavePokemon", vm);
             }
@@ -37,12 +52,18 @@ namespace Pokedex.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
+
+            var getAllRegions = await _getAll.AllRegions();
+            var getAllTypePokemon = await _getAll.AllTypesPokemon();
+            ViewBag.getAllRegions = getAllRegions;
+            ViewBag.getAllTypePokemon = getAllTypePokemon;
             return View("SavePokemon", await _pokemonServices.GetByIdSavePokemonViewModel(id));
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(SavePokemonViewModel vm)
         {
+
             if (!ModelState.IsValid)
             {
                 return View("SavePokemon", vm);

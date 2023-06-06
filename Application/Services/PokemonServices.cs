@@ -1,6 +1,7 @@
 ﻿using Application.Repository;
 using Application.ViewModels;
 using Database;
+using Microsoft.EntityFrameworkCore;
 using Pokedex.Models;
 using System;
 using System.Collections.Generic;
@@ -49,8 +50,6 @@ namespace Application.Services
         public async Task Update(SavePokemonViewModel vm)
         {
             Pokemon pokemon = await pokemonRepository.GetByIdAsync(vm.Id);
-            if (pokemon != null)
-            {
                 pokemon.Name = vm.Name;
                 pokemon.ImagePath = vm.ImagePath;
                 pokemon.Id_region = vm.Id_region;
@@ -58,7 +57,6 @@ namespace Application.Services
                 pokemon.IdType2 = vm.IdType2;
 
                 await pokemonRepository.UpdateAsync(pokemon);
-            }
         }
 
         public async Task Delete(int id)
@@ -81,19 +79,5 @@ namespace Application.Services
             };
             return vm;
         }
-
-        public static string ChangeColorType(string color)
-        {
-           switch(color) 
-            {
-            case "Agua":
-                    return "blue";
-                case "Fuego":
-                    return "red";
-                case "Tierra":
-                    return "brown";
-                };
-                return "gray";
-            }
     }
 }

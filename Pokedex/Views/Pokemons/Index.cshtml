@@ -3,8 +3,8 @@
 
 @{
     ViewData["Title"] = "Pokemons";
-    string color1, color2 = "gray";
-}
+    string color1, color2 = "black";
+ }
 
 
 <div class="container-fluid">
@@ -24,8 +24,8 @@
                     <h4 class="m-2">@pokemon.Name</h4>
                     <div class="textPokemon d-flex flex-column m-2 gap-3">
                         @{
-                            color1 = PokemonServices.ChangeColorType(pokemon.Type1.Name);
-                            color2 = PokemonServices.ChangeColorType(pokemon.Type2.Name);
+                            color1 = ViewBag.color.ChangeColorType(pokemon.Type1.Color);
+                            color2 = ViewBag.color.ChangeColorType(pokemon.Type2.Color);
                         }
                         <div class="card-text d-flex flex-row justify-content-between">
                             <b>Tipo primario: </b>
@@ -42,18 +42,14 @@
                         <div class="card-text"><b>Region: </b>
                             @pokemon.Region.Name
                         </div>
-                        <div class="card-text">
-                            <b>id: </b>
-                            @pokemon.Id
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-between m-2">
+                    <div class="d-flex align-items-between">
                         <div class="btn-group">
                             <a asp-controller="Pokemons" asp-action="Edit" asp-route-Id="@pokemon.Id" class="btn btn-sm btn-outline-info">Editar</a>
                             <a asp-controller="Pokemons" asp-action="Delete" asp-route-Id="@pokemon.Id" class="btn btn-sm btn-outline-danger">Borrar</a>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         }
     </div>

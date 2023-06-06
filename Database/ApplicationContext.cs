@@ -36,17 +36,18 @@ namespace Database
                 .HasForeignKey(pokemon => pokemon.Id_region)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<TypePokemon>()
-                .HasMany(types => types.Pokemons1)
-                .WithOne(pokemon => pokemon.Type1)
+            modelBuilder.Entity<Pokemon>()
+                .HasOne(pokemon => pokemon.Type1)
+                .WithMany(type1 => type1.Pokemons1)
                 .HasForeignKey(pokemon => pokemon.IdType1)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
-            modelBuilder.Entity<TypePokemon>()
-                .HasMany(types => types.Pokemons2)
-                .WithOne(pokemon => pokemon.Type2)
-                .HasForeignKey(pokemon => pokemon.IdType2)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+            modelBuilder.Entity<Pokemon>()
+               .HasOne(pokemon => pokemon.Type2)
+               .WithMany(type2 => type2.Pokemons2)
+               .HasForeignKey(pokemon => pokemon.IdType2)
+               .OnDelete(DeleteBehavior.ClientSetNull);
+
             #endregion
 
             #region property configuration
@@ -54,31 +55,22 @@ namespace Database
             #region Pokemon
             modelBuilder.Entity<Pokemon>()
                 .Property(pokemon => pokemon.Name)
-                .IsRequired();
-
-            modelBuilder.Entity<Pokemon>()
-                .Property(pokemon => pokemon.ImagePath)
-                .IsRequired();
-
-            modelBuilder.Entity<Pokemon>()
-                .Property(pokemon => pokemon.Id_region)
-                .IsRequired();
-
-            modelBuilder.Entity<Pokemon>()
-                .Property(pokemon => pokemon.IdType1)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(150);
             #endregion
 
             #region Region
             modelBuilder.Entity<Region>()
                 .Property(region => region.Name)
-                .IsRequired();
+                .IsRequired().
+                HasMaxLength(150);
             #endregion
 
             #region TypePokemon
             modelBuilder.Entity<TypePokemon>()
                 .Property(type => type.Name)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(150);
             #endregion
 
             #endregion

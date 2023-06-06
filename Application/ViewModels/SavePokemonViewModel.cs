@@ -1,4 +1,5 @@
-﻿using Pokedex.Models;
+﻿using Application.Services;
+using Pokedex.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,7 +24,9 @@ namespace Application.ViewModels
 
         [Required(ErrorMessage = "Debe agregar un tipo primario al pokemon")]
         public int IdType1 { get; set; }
-        public int IdType2 { get; set; }
+        public int? IdType2 { get; set; }
+        //public List<RegionViewModel> RegionList { get; set; }
+        //public List<TypePokemonViewModel> typePokemonList { get; set; }
 
     }
 }

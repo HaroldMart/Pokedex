@@ -1,0 +1,43 @@
+﻿@model Application.ViewModels.TypePokemonViewModel
+@using Application.Services;
+@{
+    ViewData["Title"] = "SaveTypePokemon";
+    bool editModel = Model.Id == 0 ? false : true;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4>@(editModel ? $"Editando el tipo: {Model.Name}" : "Creando un nuevo tipo")</h4>
+                    <div class="card-body">
+                        <form method="post" asp-controller="TypePokemons" asp-action="@(editModel ? "Edit" : "SaveTypePokemon")">
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label">Nombre: </label>
+                                <input asp-for="Name" class="form-control" />
+                                <span class="text-warning" asp-validation-for="Name"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Color" class="form-label">Color de tipo: </label>
+                                <select class="form-select" asp-for="Color">
+                                    @foreach(var item in ViewBag.color.AllColorsTypePokemon())
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+                                </select>
+                                <span class="text-warning" asp-validation-for="Color"></span>
+                            </div>
+
+                            <input hidden class="form-control" asp-for="Id" />
+
+                            <button class="btn btn-primary mt-3" type="submit">Guardar</button>
+                            <a class="btn btn-warning mt-3" asp-controller="TypePokemons" asp-action="Index">Volver atras</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

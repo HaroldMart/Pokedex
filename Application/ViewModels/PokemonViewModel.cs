@@ -14,7 +14,7 @@ namespace Application.ViewModels
         public string ImagePath { get; set; }
         public Region Region { get; set; }
         public TypePokemon Type1 { get; set; }
-        public TypePokemon Type2 { get; set; }
+        public TypePokemon? Type2 { get; set; }
 
     }
 }

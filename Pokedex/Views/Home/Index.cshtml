@@ -3,23 +3,22 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    string color1, color2 = "gray";
+    string color1, color2 = "black";
 }
 
 <div class="container-fluid">
-    <h2 class="mb-3">Mis pokemones usando Entity Framework</h2>
     <div class="row pokemonsRow">
 
     @foreach(Application.ViewModels.PokemonViewModel pokemon in Model)
         {
             <div class="col pokemon">
-                <div class="card cardPokemonHome shadow-sm">
+                <div class="card shadow-sm">
                     <img class="bd-placeholder-img card-img-top imagePokemon" src="@pokemon.ImagePath"></img>
                     <h4 class="m-2">@pokemon.Name</h4>
                     <div class="textPokemon d-flex flex-column m-2 gap-3">
                         @{
-                            color1 = PokemonServices.ChangeColorType(pokemon.Type1.Name);
-                            color2 = PokemonServices.ChangeColorType(pokemon.Type2.Name);
+                            color1 = ViewBag.color.ChangeColorType(pokemon.Type1.Color);
+                            color2 = ViewBag.color.ChangeColorType(pokemon.Type2.Color);
                         }
                         <div class="card-text d-flex flex-row justify-content-between">
                             <b>Tipo primario: </b>
@@ -33,7 +32,7 @@
                                 @pokemon.Type2.Name
                             </div>
                         </div>
-                        <div class="card-text">
+                        <div class="card-text mb-2">
                             <b>Region: </b>
                             @pokemon.Region.Name
                         </div>

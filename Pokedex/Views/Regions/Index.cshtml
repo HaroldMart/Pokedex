@@ -5,17 +5,28 @@
 }
 
 <div class="container-fluid">
-    <h2 class="mb-3">Regiones</h2>
+    <div class="mb-3 d-flex justify-content-between">
+        <h2>Mis Regiones</h2>
+        <div>
+            <a asp-controller="Regions" asp-action="Save" class="btn btn-success">Crear nueva region</a>
+        </div>
+    </div>
     <div class="row">
 
         @foreach (Application.ViewModels.RegionViewModel region in Model)
         {
-            <div class="col-lg-2 col-md-3 mb-3 col-sm-4">
-                <div class="card shadow-sm">
-                    <h4 class="m-2">@region.Name</h4>
-                    <p class="card-text m-3">@region.Id</p>
+            <div class="col-3 region mt-2">
+                <div class="card shadow-sm d-flex flex-column gap-3 p-2">
+                    <h4 class="">@region.Name</h4>
+                    <div class="d-flex align-items-between">
+                        <div class="btn-group">
+                            <a asp-controller="Regions" asp-action="Edit" asp-route-Id="@region.Id" class="btn btn-sm btn-outline-info">Editar</a>
+                            <a asp-controller="Regions" asp-action="Delete" asp-route-Id="@region.Id" class="btn btn-sm btn-outline-danger">Borrar</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         }
-    </div>
 </div>
+</div>
+

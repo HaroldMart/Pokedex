@@ -10,7 +10,6 @@ namespace Application.ViewModels
     public class TypePokemonViewModel {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Pokemon> Pokemons1 { get; set; }
-        public ICollection<Pokemon> Pokemons2 { get; set; }
+        public string Color { get; set; }
     }
 }
