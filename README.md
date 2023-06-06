@@ -6,6 +6,7 @@ This is a web app where you can manage your pokemons, you can get, add, update, 
 
 - ASP.NET
 - SQL Server
+- Entity Framework
 
 <br/>
 
