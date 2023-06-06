@@ -42,9 +42,13 @@ You can add your regions and types of pokemons.
 
 ## Web App Screenshot Preview
 
-#### Pokemons page
+#### Home page
 
 ![image](https://github.com/HaroldMart/Pokedex/assets/93040571/2ff19c49-07ff-44f4-826b-cf4c70e86bf8)
+
+#### Pokemons page
+![image](https://github.com/HaroldMart/Pokedex/assets/93040571/6725d723-b033-4483-9aa3-61f6babb78d2)
+
 
 #### Editing pokemons
 
