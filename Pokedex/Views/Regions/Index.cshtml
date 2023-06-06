@@ -5,17 +5,17 @@
 }
 
 <div class="container-fluid">
-    <div class="mb-3 d-flex justify-content-between">
+    <div class="mb-3 d-flex justify-content-between flex-wrap">
         <h2>Mis Regiones</h2>
         <div>
             <a asp-controller="Regions" asp-action="Save" class="btn btn-success">Crear nueva region</a>
         </div>
     </div>
-    <div class="row">
+    <div class="row regions">
 
         @foreach (Application.ViewModels.RegionViewModel region in Model)
         {
-            <div class="col-3 region mt-2">
+            <div class="col p-0">
                 <div class="card shadow-sm d-flex flex-column gap-3 p-2">
                     <h4 class="">@region.Name</h4>
                     <div class="d-flex align-items-between">

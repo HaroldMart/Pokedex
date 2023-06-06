@@ -30,15 +30,15 @@ namespace Application.Services
             switch (color)
             {
                 case "Rojo":
-                    return "red";
+                    return "#c00021";
                 case "Verde":
                     return "green";
                 case "Amarillo":
-                    return "yellow";
+                    return "#ffba08";
                 case "Azul":
                     return "blue";
                 case "Marron":
-                    return "brown";
+                    return "#6f1d1b";
                 case "Rosado":
                     return "pink";
                 case "Gris":

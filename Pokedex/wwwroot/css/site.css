@@ -28,7 +28,7 @@ body {
     display: grid;
     gap: 0.6rem;
     justify-content: space-between;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .pokemon {
@@ -40,19 +40,31 @@ body {
     transition: all 700ms;
 }
 
-.imagePokemon {
-    height: 230px;
-}
-
 .typePokemon {
-    padding: 0.2rem;
+    padding: 0.3rem;
     color: white;
     display: flex;
     justify-content: center;
-    width: 80px;
     border-radius: 5px
+}
+
+imagePokemon {
+    height: 200px;
+}
+
+.cont-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.2rem
 }
 
 .textPokemon {
     margin: 0.6rem 0 0.3rem 0.3rem;
+}
+
+
+.types, .regions {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
 }

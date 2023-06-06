@@ -3,12 +3,10 @@
 
 @{
     ViewData["Title"] = "Pokemons";
-    string color1, color2 = "black";
  }
 
-
 <div class="container-fluid">
-    <div class="mb-3 d-flex justify-content-between">
+    <div class="mb-3 d-flex justify-content-between flex-wrap">
         <h2>Mis Pokemones</h2>
         <div>
             <a asp-controller="Pokemons" asp-action="Save" class="btn btn-success">Crear nuevo pokemon</a>
@@ -21,24 +19,16 @@
             <div class="col pokemon">
                 <div class="card cardPokemon shadow-sm">
                     <img class="bd-placeholder-img card-img-top imagePokemon" src="@pokemon.ImagePath"></img>
-                    <h4 class="m-2">@pokemon.Name</h4>
+                    <h6 class="m-2">@pokemon.Name</h6>
                     <div class="textPokemon d-flex flex-column m-2 gap-3">
-                        @{
-                            color1 = ViewBag.color.ChangeColorType(pokemon.Type1.Color);
-                            color2 = ViewBag.color.ChangeColorType(pokemon.Type2.Color);
-                        }
-                        <div class="card-text d-flex flex-row justify-content-between">
-                            <b>Tipo primario: </b>
-                            <div style="background-color:@color1;" class="typePokemon">
+                        <div class="card-text cont-type">
+                            <div style="background-color:@pokemon.ColorType1" class="typePokemon">
                                 @pokemon.Type1.Name
-                             </div>
-                        </div>
-                        <div class="card-text d-flex justify-content-between">
-                            <b>Tipo Secundario: </b>
-                            <div style="background-color:@color2;" class="typePokemon">
+                            </div>
+                            <div style="background-color:@pokemon.ColorType2" class="typePokemon">
                                 @pokemon.Type2.Name
                             </div>
-                         </div>
+                        </div>
                         <div class="card-text"><b>Region: </b>
                             @pokemon.Region.Name
                         </div>

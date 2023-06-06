@@ -15,6 +15,8 @@ namespace Application.ViewModels
         public Region Region { get; set; }
         public TypePokemon Type1 { get; set; }
         public TypePokemon? Type2 { get; set; }
+        public string ColorType1 { get; set; }
+        public string ColorType2 { get; set;}
 
     }
 }

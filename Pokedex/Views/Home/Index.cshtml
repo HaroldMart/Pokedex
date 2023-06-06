@@ -3,43 +3,90 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    string color1, color2 = "black";
 }
 
 <div class="container-fluid">
-    <div class="row pokemonsRow">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-5 shadow-sm">
+                <div class="card-header bg-dark text-light">
+                    <h4>Regions</h4>
+                </div>
 
-    @foreach(Application.ViewModels.PokemonViewModel pokemon in Model)
-        {
-            <div class="col pokemon">
-                <div class="card shadow-sm">
-                    <img class="bd-placeholder-img card-img-top imagePokemon" src="@pokemon.ImagePath"></img>
-                    <h4 class="m-2">@pokemon.Name</h4>
-                    <div class="textPokemon d-flex flex-column m-2 gap-3">
-                        @{
-                            color1 = ViewBag.color.ChangeColorType(pokemon.Type1.Color);
-                            color2 = ViewBag.color.ChangeColorType(pokemon.Type2.Color);
-                        }
-                        <div class="card-text d-flex flex-row justify-content-between">
-                            <b>Tipo primario: </b>
-                            <div style="background-color:@color1;" class="typePokemon">
-                                @pokemon.Type1.Name
+                <div class="card-body">
+                    <form method="post" asp-controller="Home" asp-action="Index">
+                        <div class="d-flex gap-3 flex-wrap">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" value="null" type="radio" name="Region" id="region-all" />
+                                    <label class="form-check-label" for="region-all">All</label>
+                                </div>
                             </div>
+
+                            @foreach (Application.ViewModels.RegionViewModel region in ViewBag.Regions)
+                            {
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" value="@region.Id" type="radio" name="Region" id="region-@region.Id" />
+                                        <label class="form-check-label" for="region-all">@region.Name</label>
+                                    </div>
+                                </div>
+                            }
                         </div>
-                        <div class="card-text d-flex justify-content-between">
-                            <b>Tipo Secundario: </b>
-                            <div style="background-color:@color2" class="typePokemon">
-                                @pokemon.Type2.Name
-                            </div>
-                        </div>
-                        <div class="card-text mb-2">
-                            <b>Region: </b>
-                            @pokemon.Region.Name
-                        </div>
-                    </div>
-                   
+                        <button type="submit" class="btn btn-primary mt-2">Search</button>
+                    </form>
                 </div>
             </div>
+        </div>
+    </div>
+
+
+    <div class="mb-3 justify-content-between d-flex flex-wrap">
+        <h2>Welcome to your Pokedex</h2>
+        <form method="post" asp-controller="Home" asp-action="Search">
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" type="search" placeholder="Pokemon" name="name">
+                </div>
+                <div class="col">
+                    <button class="btn btn-success" type="submit">Filtrar</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    <div class="row pokemonsRow">
+        @if (Model.Count == 0 || Model == null)
+        {
+            <h4 class="py-5 text-danger">No hay pokemones</h4>
+        }
+        else
+        {
+            @foreach (Application.ViewModels.PokemonViewModel pokemon in Model)
+            {
+                <div class="col pokemon">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top imagePokemon" src="@pokemon.ImagePath"></img>
+                        <h6 class="m-2">@pokemon.Name</h6>
+                        <div class="textPokemon d-flex flex-column m-2 gap-3">
+                            <div class="card-text cont-type">
+                                <div style="background-color:@pokemon.ColorType1;" class="typePokemon">
+                                    @pokemon.Type1.Name
+                                </div>
+                                <div style="background-color:@pokemon.ColorType2" class="typePokemon">
+                                    @pokemon.Type2.Name
+                                </div>
+                            </div>
+                            <div class="card-text mb-2">
+                                @pokemon.Region.Name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         }
     </div>
 </div>
+
+    
+       

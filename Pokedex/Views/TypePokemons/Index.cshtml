@@ -5,17 +5,17 @@
 }
 
 <div class="container-fluid">
-    <div class="mb-3 d-flex justify-content-between">
+    <div class="mb-3 d-flex justify-content-between flex-wrap">
         <h2>Mis Tipos</h2>
         <div>
             <a asp-controller="TypePokemons" asp-action="Save" class="btn btn-success">Crear nuevo tipo</a>
         </div>
     </div>
-    <div class="row">
+    <div class="row types">
 
         @foreach (Application.ViewModels.TypePokemonViewModel typePokemon in Model)
         {
-            <div class="col-3 type mt-2">
+            <div class="col p-0">
                 <div class="card shadow-sm d-flex flex-column gap-3 p-2">
                     @{
                         string colorType = ViewBag.color.ChangeColorType(typePokemon.Color);

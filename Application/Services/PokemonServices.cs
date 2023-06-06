@@ -14,8 +14,10 @@ namespace Application.Services
     public class PokemonServices
     {
         private readonly PokemonRepository pokemonRepository;
+        private getColors color;
         public PokemonServices(ApplicationContext dbContext) { 
             pokemonRepository = new(dbContext);
+            color = new getColors();
         }
 
         public async Task<List<PokemonViewModel>> GetAllPokemons()
@@ -29,7 +31,9 @@ namespace Application.Services
                 ImagePath = pokemon.ImagePath,
                 Region = pokemon.Region,
                 Type1 = pokemon.Type1,
-                Type2 = pokemon.Type2
+                Type2 = pokemon.Type2,
+                ColorType1 = color.ChangeColorType(pokemon.Type1.Color),
+                ColorType2 = color.ChangeColorType(pokemon.Type2.Color)
             }).ToList();
         }
 
@@ -79,5 +83,56 @@ namespace Application.Services
             };
             return vm;
         }
+
+        public async Task<List<PokemonViewModel>> GetAllViewModelWithFilters(FilterPokemonViewModel filters)
+        {
+            var pokemonList = await pokemonRepository.GetAllAsync();
+
+            var ListViewModels = pokemonList.Select(pokemon => new PokemonViewModel
+            {
+                Id = pokemon.Id,
+                Name = pokemon.Name,
+                ImagePath = pokemon.ImagePath,
+                Type1 = pokemon.Type1,
+                Type2 = pokemon.Type2,
+                Region = pokemon.Region,
+                ColorType1 = color.ChangeColorType(pokemon.Type1.Color),
+                ColorType2 = color.ChangeColorType(pokemon.Type2.Color)
+
+            }).ToList();
+
+            if (filters.Region != null)
+            {
+                ListViewModels = ListViewModels.Where(pokemon => pokemon.Region.Id == filters.Region.Value).ToList();
+            }
+
+            return ListViewModels;
+        }
+
+        public async Task<List<PokemonViewModel>> GetAllViewModelWithSearch(string name)
+        {
+            var pokemonList = await pokemonRepository.GetAllAsync();
+
+            var ListViewModels = pokemonList.Select(pokemon => new PokemonViewModel
+            {
+                Id = pokemon.Id,
+                Name = pokemon.Name,
+                ImagePath = pokemon.ImagePath,
+                Type1 = pokemon.Type1,
+                Type2 = pokemon.Type2,
+                Region = pokemon.Region,
+                ColorType1 = color.ChangeColorType(pokemon.Type1.Color),
+                ColorType2 = color.ChangeColorType(pokemon.Type2.Color)
+
+            }).ToList();
+
+            if (name != null)
+            {
+                ListViewModels = ListViewModels.Where(pokemon => pokemon.Name == name).ToList();
+            }
+
+            return ListViewModels;
+        }
+
     }
 }
