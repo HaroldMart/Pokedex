@@ -48,10 +48,6 @@ body {
     border-radius: 5px
 }
 
-imagePokemon {
-    height: 200px;
-}
-
 .cont-type {
     display: grid;
     grid-template-columns: 1fr 1fr;
